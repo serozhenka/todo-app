@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+body {
+    background: #2193b0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Lato', sans-serif;
+}
+
+#task-container {
+    max-width: 700px;
+    background-color: #fff;
+    margin: 100px auto;
+    box-shadow: 0px 0px 10px 0px #7C7B7C;
+    justify-content: space-around;
+}
+
+#form-wrapper {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    margin-bottom: 5px;
+    box-shadow: 0px 3px 5px rgba(0,0,0, 0.25);
+    background-color: #fff;
+}
+
+.flex-wrapper {
+    display: flex;
+}
+
+.flex-wrapper div input {
+    border-radius: 0;
+    width: 100%;
+}
+
+#submit {
+    background: #2193b0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-color: #6DD5EDFF;
+}
+
+.edit, .date, .remove {
+    margin: auto;
+    color: #2193b0;
+    font-weight: bold;
+}
+
+.date {
+    color: rgba(33, 147, 176, 0.5);
+}
+
+.task-wrapper {
+    border-bottom: 1px solid rgba(66, 65, 65, 0.1);
+    padding: 10px 20px;
+    color: #757474;
+}
+
+.task-wrapper:hover {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+
+.detail-buttons {
+    justify-content: space-between!important;
+    padding: 20px 20px 10px 20px;
+}
+
+
+.btn-detail {
+    background: #2193b0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-color: #6DD5EDFF;
+    border-radius: 20px;
+}
