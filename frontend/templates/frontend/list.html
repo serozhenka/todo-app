@@ -14,6 +14,10 @@
 <body>
     <div class="container">
         <div id="task-container">
+            <div id="info-wrapper" class="flex-wrapper">
+                <div>{{ request.user.username }}</div>
+                <a href="{% url 'logout' %}" class="link">Logout</a>
+            </div>
             <div id="form-wrapper">
                 <form id="form">
                     {% csrf_token %}

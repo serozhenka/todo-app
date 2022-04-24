@@ -52,12 +52,17 @@
 
         function fillData() {
           fetch(url)
-          .then(response => response.json())
+          .then((response) => {
+            if (response.status === 404) {
+              window.location.href = "{% url 'task-list' %}"
+              return
+            }
+            return response.json()
+          })
           .then(data => {
             console.log(data)
             title.value = data.title
             body.value = data.body
-
           })
         }
 

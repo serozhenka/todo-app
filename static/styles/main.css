@@ -75,3 +75,32 @@ body {
     border-color: #6DD5EDFF;
     border-radius: 20px;
 }
+
+.max-height {
+    height: 100vh;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #114e5d;
+}
+
+.message-container ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.message-container li {
+    padding: 8px 16px;
+}
+
+#info-wrapper {
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    background-color: #f4f9fc;
+    color: #2193b0;
+}
