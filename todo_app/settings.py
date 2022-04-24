@@ -29,6 +29,7 @@ INSTALLED_APPS = [
 
     # external apps
     'rest_framework',
+    'storages',
 
     # internal apps
     'api.apps.ApiConfig',
@@ -43,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'todo_app.urls'
@@ -69,12 +71,24 @@ WSGI_APPLICATION = 'todo_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('TODO_DB_NAME'),
+            'USER': config('TODO_DB_USER'),
+            'PASSWORD': config('TODO_DB_PASSWORD'),
+            'HOST': config('TODO_DB_HOST'),
+            'PORT': '5432',
+        }
+    }
 
 
 # Password validation
@@ -111,8 +125,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = 'staticfiles/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles/'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static/'
 ]
@@ -122,3 +137,14 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = config('TODO_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('TODO_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('TODO_AWS_STORAGE_BUCKET_NAME')
+AWS_DEFAULT_ACL = 'public-read'
+AWS_STATIC_LOCATION = 'static'
+AWS_S3_REGION_NAME = 'eu-central-1'
+AWS_S3_ADDRESSING_STYLE = "virtual"
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_FILE_OVERWRITE = False
